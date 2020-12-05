@@ -19,10 +19,7 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func buttuonTapped(_ sender: Any) {
-        let sum = self.inputNumbers().reduce(0, { $0 + $1 })
-        let str = String(sum)
-        print(str)
-        self.resultLabel.text = String(sum)
+        self.resultLabel.text = self.getResult()
     }
     
     // MARK: Lifecycle Events
@@ -32,6 +29,11 @@ class ViewController: UIViewController {
     }
 
     // MARK: Methods
+    private func getResult() -> String {
+        let resultInt = self.inputNumbers().reduce(0, { $0 + $1 })
+        return String(resultInt)
+    }
+    
     private func inputNumbers() -> [Int] {
         let texts = [
             self.numberTextField1.text,
@@ -48,5 +50,6 @@ class ViewController: UIViewController {
                 return Int(numText) ?? 0
             })
     }
+    
 }
 
